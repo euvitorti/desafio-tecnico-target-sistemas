@@ -1,9 +1,7 @@
-# Desafio Tecnico Target Sistemas
- 
-Estágio - São Paulo
-Pergunta 2 de 2
-Técnica:
+# <img src="https://s3.amazonaws.com/sample-login/images/images/000/001/566/original/target.png?1514554052" alt="Logo da minha empresa" width="350" height="300">
 
+# Desafio Técnico
+ 
 1) Observe o trecho de código abaixo: int INDICE = 13, SOMA = 0, K = 0;
 Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
 Imprimir(SOMA);
