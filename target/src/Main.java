@@ -9,24 +9,22 @@ public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    // Método estático 'somar' que realiza a soma e imprime o resultado
     public static void somar() {
         System.out.println("""
-        \n-------------
+        \n----------
         Desafio Soma
-        -------------
+        ------------
         """);
 
         Soma soma = new Soma();
         System.out.printf("Valor da soma: %d.\n", soma.somar());
     }
 
-    // Método para interagir com o usuário e chamar a lógica de Fibonacci
     public static void verificarNumeroFibonacci() {
         System.out.println("""
-        \n-------------
+        \n---------------
         Desafio Fibonacci
-        -------------
+        -----------------
         """);
 
         boolean inputValido = false;
@@ -47,59 +45,37 @@ public class Main {
         fibonacci.verificarNumeroFibonacci(numero);
     }
 
-    // Método para coletar os dados de faturamento do usuário
-    public static double[] coletarFaturamentos() {
-        double[] faturamentos = null;
-        boolean inputValido = false;
-
-        while (!inputValido) {
-            try {
-                System.out.print("Informe o número de dias do mês: ");
-                int dias = scanner.nextInt();
-                faturamentos = new double[dias];
-
-                for (int i = 0; i < dias; i++) {
-                    System.out.print("Informe o faturamento do dia " + (i + 1) + ": ");
-                    faturamentos[i] = scanner.nextDouble();
-                }
-
-                inputValido = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, insira números válidos.");
-                scanner.next();
-            }
-        }
-        return faturamentos;
-    }
-
-    // Método para mostrar os resultados do desafio de faturamento
     public static void mostrarResultadosFaturamento() {
         System.out.println("""
-        \n-------------
-        Desafio Faturamento
-        -------------
-        """);
+    \n-----------------
+    Desafio Faturamento
+    -------------------
+    """);
 
-        double[] faturamentos = coletarFaturamentos();
-        Faturamento faturamento = new Faturamento(faturamentos);
+        try {
+            // Caminho relativo dentro do diretório src/recursos
+            Faturamento faturamento = Faturamento.fromXML("arquivosFaturamento/faturamentos.xml");
+            double menor = faturamento.menorFaturamento();
+            double maior = faturamento.maiorFaturamento();
+            double media = faturamento.mediaMensal();
+            int diasAcimaDaMedia = faturamento.diasAcimaDaMedia();
 
-        double menor = faturamento.menorFaturamento();
-        double maior = faturamento.maiorFaturamento();
-        int diasAcimaDaMedia = faturamento.diasAcimaDaMedia();
-
-        System.out.printf("Menor valor de faturamento: %.2f\n", menor);
-        System.out.printf("Maior valor de faturamento: %.2f\n", maior);
-        System.out.printf("Número de dias com faturamento acima da média: %d\n", diasAcimaDaMedia);
+            System.out.printf("Menor valor de faturamento: %.2f\n", menor);
+            System.out.printf("Maior valor de faturamento: %.2f\n", maior);
+            System.out.printf("Média mensal: %.2f\n", media);
+            System.out.printf("Número de dias com faturamento acima da média: %d\n", diasAcimaDaMedia);
+        } catch (Exception e) {
+            System.out.println("Erro ao ler o arquivo de faturamento: " + e.getMessage());
+        }
     }
 
-    // Método 'main' que é o ponto de entrada do programa
     public static void main(String[] args) {
         boolean continuar = true;
 
         while (continuar) {
             System.out.println("""
             \n-------------
-            Target Sistemas
+            Menu Principal
             -------------
             1. Desafio Soma
             2. Desafio Fibonacci
@@ -108,13 +84,13 @@ public class Main {
             """);
 
             System.out.print("Escolha uma opção: ");
-            int opcao = 0;
+            int opcao = -1;
 
             try {
                 opcao = scanner.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
-                scanner.next(); // Limpa o buffer do scanner
+                scanner.next();
             }
 
             switch (opcao) {
