@@ -1,9 +1,7 @@
-# Desafio Tecnico Target Sistemas
- 
-Estágio - São Paulo
-Pergunta 2 de 2
-Técnica:
+# Lógica De Programação 👨‍💻
 
+# DESAFIO 4 E 5 SENDO TERMINADO E REFATORADO, LOGO DEPOIS ESTARÁ AQUI
+ 
 1) Observe o trecho de código abaixo: int INDICE = 13, SOMA = 0, K = 0;
 Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
 Imprimir(SOMA);
@@ -36,5 +34,3 @@ Escreva um programa na linguagem que desejar onde calcule o percentual de repres
 IMPORTANTE:
 a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
 b) Evite usar funções prontas, como, por exemplo, reverse;
-
-NÃO SE ESQUEÇA DE INSERIR O LINK DO SEU REPOSITÓRIO NO GITHUB COM O CÓDIGO FONTE QUE VOCÊ DESENVOLVEU
