@@ -1,6 +1,7 @@
 import desafioFaturamento.Faturamento;
 import desafioFibonacci.Fibonacci;
 import desafioSoma.Soma;
+import desafioPercentualFaturamento.PercentualFaturamento;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -47,13 +48,12 @@ public class Main {
 
     public static void mostrarResultadosFaturamento() {
         System.out.println("""
-    \n-----------------
-    Desafio Faturamento
-    -------------------
-    """);
+        \n-----------------
+        Desafio Faturamento
+        -------------------
+        """);
 
         try {
-            // Caminho relativo dentro do diretório src/recursos
             Faturamento faturamento = Faturamento.fromXML("arquivosFaturamento/faturamentos.xml");
             double menor = faturamento.menorFaturamento();
             double maior = faturamento.maiorFaturamento();
@@ -69,6 +69,22 @@ public class Main {
         }
     }
 
+    public static void mostrarPercentualFaturamento() {
+        System.out.println("""
+    \n----------------------------
+    Desafio Percentual Faturamento
+    ------------------------------
+    """);
+
+        try {
+            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML("arquivosFaturamento/percentualFaturamento.xml");
+            percentualFaturamento.calcularPercentuais();
+        } catch (Exception e) {
+            System.out.println("Erro ao calcular percentual de faturamento: " + e.getMessage());
+        }
+    }
+
+
     public static void main(String[] args) {
         boolean continuar = true;
 
@@ -80,7 +96,8 @@ public class Main {
             1. Desafio Soma
             2. Desafio Fibonacci
             3. Desafio Faturamento
-            4. Sair
+            4. Desafio Percentual Faturamento
+            5. Sair
             """);
 
             System.out.print("Escolha uma opção: ");
@@ -104,11 +121,14 @@ public class Main {
                     mostrarResultadosFaturamento();
                     break;
                 case 4:
+                    mostrarPercentualFaturamento();
+                    break;
+                case 5:
                     continuar = false;
                     System.out.println("Saindo... Obrigado por usar o programa.");
                     break;
                 default:
-                    System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 4.");
+                    System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 5.");
                     break;
             }
         }
