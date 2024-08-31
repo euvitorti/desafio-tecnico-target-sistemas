@@ -1,5 +1,6 @@
 import desafioFaturamento.Faturamento;
 import desafioFibonacci.Fibonacci;
+import desafioInverterString.InverterString;
 import desafioSoma.Soma;
 import desafioPercentualFaturamento.PercentualFaturamento;
 
@@ -12,7 +13,7 @@ public class Main {
 
     public static void somar() {
         System.out.println("""
-        \n----------
+        \n------------
         Desafio Soma
         ------------
         """);
@@ -77,27 +78,42 @@ public class Main {
     """);
 
         try {
-            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML("arquivosFaturamento/percentualFaturamento.xml");
+            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML(
+                    "arquivosFaturamento/percentualFaturamento.xml");
             percentualFaturamento.calcularPercentuais();
         } catch (Exception e) {
             System.out.println("Erro ao calcular percentual de faturamento: " + e.getMessage());
         }
     }
 
+    public static void inverterString() {
+        System.out.println("""
+        \n-----------------------------
+        Desafio Inversão de String
+        -----------------------------
+        """);
+
+        System.out.print("Informe a string para inverter: ");
+        String str = scanner.nextLine(); // Lê a string informada pelo usuário
+
+        String resultado = InverterString.inverter(str); // Inverte a string
+        System.out.println("String invertida: " + resultado);
+    }
 
     public static void main(String[] args) {
         boolean continuar = true;
 
         while (continuar) {
             System.out.println("""
-            \n-------------
-            Menu Principal
-            -------------
+            \n-----------------------------
+            👩‍💻     Target Sistemas     👨‍💻
+            -----------------------------
             1. Desafio Soma
             2. Desafio Fibonacci
             3. Desafio Faturamento
             4. Desafio Percentual Faturamento
-            5. Sair
+            5. Desafio Inversão de String
+            6. Sair
             """);
 
             System.out.print("Escolha uma opção: ");
@@ -105,9 +121,10 @@ public class Main {
 
             try {
                 opcao = scanner.nextInt();
+                scanner.nextLine(); // Consumir a nova linha deixada pelo nextInt()
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
-                scanner.next();
+                scanner.next(); // Limpar o buffer
             }
 
             switch (opcao) {
@@ -124,11 +141,15 @@ public class Main {
                     mostrarPercentualFaturamento();
                     break;
                 case 5:
+                    inverterString();
+                    break;
+                case 6:
                     continuar = false;
-                    System.out.println("Saindo... Obrigado por usar o programa.");
+                    System.out.println("Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/");
+                    System.out.println("Saindo... Obrigado por usar o programa. 👋");
                     break;
                 default:
-                    System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 5.");
+                    System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 6.");
                     break;
             }
         }
