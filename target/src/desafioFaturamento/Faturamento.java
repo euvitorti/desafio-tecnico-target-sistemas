@@ -49,33 +49,6 @@ public class Faturamento {
         return new Faturamento(faturamentos.stream().mapToDouble(Double::doubleValue).toArray());
     }
 
-//    // Método privado para ler o arquivo XML e retornar os faturamentos
-//    private static double[] lerFaturamentosDeArquivo(String caminhoArquivo) throws Exception {
-//        List<Double> faturamentos = new ArrayList<>();
-//        File file = new File(caminhoArquivo);
-//
-//        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder builder = factory.newDocumentBuilder();
-//        Document document = builder.parse(file);
-//        document.getDocumentElement().normalize();
-//
-//        NodeList nodeList = document.getElementsByTagName("dia");
-//
-//        for (int i = 0; i < nodeList.getLength(); i++) {
-//            Element element = (Element) nodeList.item(i);
-//            String valorFaturamento = element.getElementsByTagName("faturamento").item(0).getTextContent();
-//
-//            if (valorFaturamento != null && !valorFaturamento.isEmpty()) {
-//                double valor = Double.parseDouble(valorFaturamento);
-//                if (valor > 0) { // Considera apenas dias com faturamento positivo
-//                    faturamentos.add(valor);
-//                }
-//            }
-//        }
-//
-//        return faturamentos.stream().mapToDouble(Double::doubleValue).toArray();
-//    }
-
     // Método para encontrar o menor valor de faturamento
     public double menorFaturamento() {
         double menor = Double.MAX_VALUE;
