@@ -1,17 +1,16 @@
 package desafioFaturamento;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import lerArquivoXml.LerXML;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Faturamento {
 
+    private static final String CAMINHO_PADRAO_ARQUIVO_XML = "arquivosFaturamento/faturamentos.xml";
     private double[] faturamentos;
 
     // Construtor privado para uso interno na leitura dos dados
@@ -20,38 +19,48 @@ public class Faturamento {
     }
 
     // Método estático para criar uma instância de Faturamento a partir de um arquivo XML
-    public static Faturamento fromXML(String caminhoArquivo) throws Exception {
+    public static Faturamento fromXML() {
         List<Double> faturamentos = new ArrayList<>();
 
-        // Usa o ClassLoader para carregar o arquivo do classpath
-        ClassLoader classLoader = Faturamento.class.getClassLoader();
-        File file = new File(classLoader.getResource(caminhoArquivo).getFile());
+        try {
+            // Analisa o arquivo XML e cria um objeto Document
+            Document document = LerXML.fromXML(CAMINHO_PADRAO_ARQUIVO_XML, Faturamento.class);
 
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        Document document = builder.parse(file);
-        document.getDocumentElement().normalize();
+            // Obtém todos os elementos com a tag "dia"
+            NodeList nodeList = document.getElementsByTagName("dia");
 
-        NodeList nodeList = document.getElementsByTagName("dia");
+            // Itera sobre os elementos "dia" e extrai os dados de faturamento
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
+                String valorFaturamento = element.getElementsByTagName("faturamento").item(0).getTextContent();
 
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Element element = (Element) nodeList.item(i);
-            String valorFaturamento = element.getElementsByTagName("faturamento").item(0).getTextContent();
-
-            if (valorFaturamento != null && !valorFaturamento.isEmpty()) {
-                double valor = Double.parseDouble(valorFaturamento);
-                if (valor > 0) { // Considera apenas dias com faturamento positivo
-                    faturamentos.add(valor);
+                if (valorFaturamento != null && !valorFaturamento.isEmpty()) {
+                    try {
+                        // Converte o valor de faturamento para double
+                        double valor = Double.parseDouble(valorFaturamento);
+                        if (valor > 0) { // Considera apenas dias com faturamento positivo
+                            faturamentos.add(valor);
+                        }
+                    } catch (NumberFormatException e) {
+                        // Trata o caso onde o valor de faturamento não pode ser convertido para double
+                        System.err.println("Valor de faturamento inválido: " + valorFaturamento);
+                    }
                 }
             }
+
+        } catch (Exception e) {
+            // Trata exceções relacionadas ao carregamento do arquivo, parsing XML, etc.
+            e.printStackTrace();
         }
 
+        // Converte a lista de faturamentos para um array de doubles e cria uma instância de Faturamento
         return new Faturamento(faturamentos.stream().mapToDouble(Double::doubleValue).toArray());
     }
 
     // Método para encontrar o menor valor de faturamento
     public double menorFaturamento() {
         double menor = Double.MAX_VALUE;
+        // Itera sobre o array de faturamentos para encontrar o menor valor maior que zero
         for (double faturamento : faturamentos) {
             if (faturamento < menor && faturamento > 0) {
                 menor = faturamento;
@@ -63,6 +72,7 @@ public class Faturamento {
     // Método para encontrar o maior valor de faturamento
     public double maiorFaturamento() {
         double maior = Double.MIN_VALUE;
+        // Itera sobre o array de faturamentos para encontrar o maior valor
         for (double faturamento : faturamentos) {
             if (faturamento > maior) {
                 maior = faturamento;
@@ -71,16 +81,18 @@ public class Faturamento {
         return maior;
     }
 
-    // Método para calcular a média mensal
+    // Método para calcular a média mensal de faturamento
     public double mediaMensal() {
         double soma = 0;
         int count = 0;
+        // Calcula a soma de todos os faturamentos positivos e conta os dias válidos
         for (double faturamento : faturamentos) {
             if (faturamento > 0) {
                 soma += faturamento;
                 count++;
             }
         }
+        // Retorna a média ou 0 se não houver dias válidos
         return (count > 0) ? soma / count : 0;
     }
 
@@ -88,11 +100,27 @@ public class Faturamento {
     public int diasAcimaDaMedia() {
         double media = mediaMensal();
         int count = 0;
+        // Conta quantos dias tiveram faturamento acima da média mensal
         for (double faturamento : faturamentos) {
             if (faturamento > media) {
                 count++;
             }
         }
         return count;
+    }
+
+    public void mostrarFaturamento() {
+
+        double menor = menorFaturamento();
+        double maior = maiorFaturamento();
+        double media = mediaMensal();
+        int diasAcimaDaMedia = diasAcimaDaMedia();
+
+        System.out.printf("""
+                        Menor valor de faturamento: %.2f
+                        Maior valor de faturamento: %.2f
+                        Média mensal: %.2f
+                        Número de dias com faturamento acima da média: %d
+                    """, menor, maior, media, diasAcimaDaMedia);
     }
 }
