@@ -1,5 +1,4 @@
 <faturamentos>
-    <!-- Semana 1 -->
     <dia>
         <data>2024-08-01</data>
         <faturamento>31490.7866</faturamento>
@@ -8,16 +7,21 @@
         <data>2024-08-02</data>
         <faturamento>37277.9400</faturamento>
     </dia>
-    <!-- Fim de semana: 2024-08-03, 2024-08-04 (sem faturamento) -->
-
-    <!-- Semana 2 -->
     <dia>
-        <data>2024-08-05</data>
+        <data>2024-08-03</data>
         <faturamento>37708.4303</faturamento>
     </dia>
     <dia>
-        <data>2024-08-06</data>
+        <data>2024-08-04</data>
         <faturamento>0.0000</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-05</data>
+        <faturamento>0.0000</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-06</data>
+        <faturamento>17934.2269</faturamento>
     </dia>
     <dia>
         <data>2024-08-07</data>
@@ -25,80 +29,94 @@
     </dia>
     <dia>
         <data>2024-08-08</data>
-        <faturamento>17934.2269</faturamento>
-    </dia>
-    <dia>
-        <data>2024-08-09</data>
-        <faturamento>0.0000</faturamento>
-    </dia>
-    <!-- Fim de semana: 2024-08-10, 2024-08-11 (sem faturamento) -->
-
-    <!-- Semana 3 -->
-    <dia>
-        <data>2024-08-12</data>
         <faturamento>6965.1262</faturamento>
     </dia>
     <dia>
-        <data>2024-08-13</data>
+        <data>2024-08-09</data>
         <faturamento>24390.9374</faturamento>
     </dia>
     <dia>
-        <data>2024-08-14</data>
+        <data>2024-08-10</data>
         <faturamento>14279.6481</faturamento>
     </dia>
     <dia>
-        <data>2024-08-15</data>
+        <data>2024-08-11</data>
         <faturamento>0.0000</faturamento>
     </dia>
     <dia>
-        <data>2024-08-16</data>
+        <data>2024-08-12</data>
         <faturamento>0.0000</faturamento>
     </dia>
-    <!-- Fim de semana: 2024-08-17, 2024-08-18 (sem faturamento) -->
-
-    <!-- Semana 4 -->
     <dia>
-        <data>2024-08-19</data>
+        <data>2024-08-13</data>
         <faturamento>39807.6622</faturamento>
     </dia>
     <dia>
-        <data>2024-08-20</data>
+        <data>2024-08-14</data>
         <faturamento>27261.6304</faturamento>
     </dia>
     <dia>
-        <data>2024-08-21</data>
+        <data>2024-08-15</data>
         <faturamento>39775.6434</faturamento>
     </dia>
     <dia>
-        <data>2024-08-22</data>
+        <data>2024-08-16</data>
         <faturamento>29797.6232</faturamento>
     </dia>
     <dia>
-        <data>2024-08-23</data>
+        <data>2024-08-17</data>
         <faturamento>17216.5017</faturamento>
     </dia>
-    <!-- Fim de semana: 2024-08-24, 2024-08-25 (sem faturamento) -->
-
-    <!-- Semana 5 -->
+    <dia>
+        <data>2024-08-18</data>
+        <faturamento>0.0000</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-19</data>
+        <faturamento>0.0000</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-20</data>
+        <faturamento>12974.2000</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-21</data>
+        <faturamento>28490.9861</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-22</data>
+        <faturamento>8748.0937</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-23</data>
+        <faturamento>8889.0023</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-24</data>
+        <faturamento>17767.5583</faturamento>
+    </dia>
+    <dia>
+        <data>2024-08-25</data>
+        <faturamento>0.0000</faturamento>
+    </dia>
     <dia>
         <data>2024-08-26</data>
         <faturamento>0.0000</faturamento>
     </dia>
     <dia>
         <data>2024-08-27</data>
-        <faturamento>12974.2000</faturamento>
+        <faturamento>3071.3283</faturamento>
     </dia>
     <dia>
         <data>2024-08-28</data>
-        <faturamento>28490.9861</faturamento>
+        <faturamento>48275.2994</faturamento>
     </dia>
     <dia>
         <data>2024-08-29</data>
-        <faturamento>8748.0937</faturamento>
+        <faturamento>10299.6761</faturamento>
     </dia>
     <dia>
         <data>2024-08-30</data>
-        <faturamento>8889.0023</faturamento>
+        <faturamento>39874.1073</faturamento>
     </dia>
-    <!-- Fim de semana: 2024-08-31 (sem faturamento) -->
 </faturamentos>
