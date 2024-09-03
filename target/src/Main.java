@@ -1,8 +1,8 @@
 import desafioFaturamento.Faturamento;
 import desafioFibonacci.Fibonacci;
 import desafioInverterString.InverterString;
-import desafioSoma.Soma;
 import desafioPercentualFaturamento.PercentualFaturamento;
+import desafioSoma.Soma;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -55,16 +55,8 @@ public class Main {
         """);
 
         try {
-            Faturamento faturamento = Faturamento.fromXML("arquivosFaturamento/faturamentos.xml");
-            double menor = faturamento.menorFaturamento();
-            double maior = faturamento.maiorFaturamento();
-            double media = faturamento.mediaMensal();
-            int diasAcimaDaMedia = faturamento.diasAcimaDaMedia();
-
-            System.out.printf("Menor valor de faturamento: %.2f\n", menor);
-            System.out.printf("Maior valor de faturamento: %.2f\n", maior);
-            System.out.printf("Média mensal: %.2f\n", media);
-            System.out.printf("Número de dias com faturamento acima da média: %d\n", diasAcimaDaMedia);
+            Faturamento faturamento = Faturamento.fromXML();
+            faturamento.mostrarFaturamento();
         } catch (Exception e) {
             System.out.println("Erro ao ler o arquivo de faturamento: " + e.getMessage());
         }
@@ -78,8 +70,7 @@ public class Main {
     """);
 
         try {
-            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML(
-                    "arquivosFaturamento/percentualFaturamento.xml");
+            PercentualFaturamento percentualFaturamento = PercentualFaturamento.fromXML();
             percentualFaturamento.calcularPercentuais();
         } catch (Exception e) {
             System.out.println("Erro ao calcular percentual de faturamento: " + e.getMessage());
@@ -97,7 +88,7 @@ public class Main {
         String str = scanner.nextLine(); // Lê a string informada pelo usuário
 
         String resultado = InverterString.inverter(str); // Inverte a string
-        System.out.println("String invertida: " + resultado);
+        System.out.printf("String invertida: %s", resultado);
     }
 
     public static void main(String[] args) {
@@ -117,7 +108,7 @@ public class Main {
             """);
 
             System.out.print("Escolha uma opção: ");
-            int opcao = -1;
+            int opcao = 0;
 
             try {
                 opcao = scanner.nextInt();
@@ -145,8 +136,14 @@ public class Main {
                     break;
                 case 6:
                     continuar = false;
-                    System.out.println("Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/");
-                    System.out.println("Saindo... Obrigado por usar o programa. 👋");
+                    System.out.println("""
+                            
+                            #QueroSerTargetiano 👨‍💻
+                            
+                            Antes de ir... Acesse o meu portfólio: https://meuportfolio-euvitortis-projects.vercel.app/
+                            
+                            Saindo... Obrigado por usar o programa. 👋
+                            """);
                     break;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha uma opção entre 1 e 6.");
