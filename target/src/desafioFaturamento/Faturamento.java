@@ -111,16 +111,16 @@ public class Faturamento {
 
     public void mostrarFaturamento() {
 
-        double menor = menorFaturamento();
-        double maior = maiorFaturamento();
-        double media = mediaMensal();
+        double menorFaturamento = menorFaturamento();
+        double maiorFaturamento = maiorFaturamento();
+        double mediaMensal = mediaMensal();
         int diasAcimaDaMedia = diasAcimaDaMedia();
 
         System.out.printf("""
-                        Menor valor de faturamento: %.2f
-                        Maior valor de faturamento: %.2f
-                        Média mensal: %.2f
-                        Número de dias com faturamento acima da média: %d
-                    """, menor, maior, media, diasAcimaDaMedia);
+                   Menor valor de faturamento: %.2f
+                   Maior valor de faturamento: %.2f
+                   Média mensal: %.2f
+                   Número de dias com faturamento acima da média: %d"""
+                , menorFaturamento, maiorFaturamento, mediaMensal, diasAcimaDaMedia);
     }
 }
