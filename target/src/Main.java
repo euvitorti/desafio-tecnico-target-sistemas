@@ -33,14 +33,20 @@ public class Main {
        """;
 
     private static int lerOpcao(String menu) {
+
         System.out.println(menu);
+
         while (true) {
+
             try {
+
                 System.out.print("Escolha uma opção: ");
                 int opcao = scanner.nextInt();
                 scanner.nextLine(); // Consumir a nova linha deixada pelo nextInt()
+
                 if (opcao > 0) return opcao;
                 System.out.println(OPCAO_INVALIDA);
+
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número válido.");
                 scanner.next(); // Limpar o buffer para evitar loop infinito
@@ -49,11 +55,15 @@ public class Main {
     }
 
     private static int lerNumero() {
+
         while (true) {
+
             try {
+
                 int numero = scanner.nextInt();
                 scanner.nextLine(); // Consumir a nova linha deixada pelo nextInt()
                 return numero;
+
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
                 scanner.next(); // Limpar o buffer para evitar loop infinito
@@ -62,8 +72,10 @@ public class Main {
     }
 
     private static void somar() {
+
         int opcao = lerOpcao(MENU_SOMA);
         Soma soma = new Soma();
+
         int resultado = switch (opcao) {
             case 1 -> soma.somarNumeroPadrao();
             case 2 -> {
@@ -75,6 +87,7 @@ public class Main {
                 yield 0;
             }
         };
+
         if (resultado != 0)
             System.out.printf("Valor da soma: %d.\n", resultado);
     }
@@ -117,9 +130,9 @@ public class Main {
                ---------------------------
                Desafio Inversão de String
                ---------------------------""");
+
         System.out.print("Informe a string para inverter: ");
-        String resultado = InverterString.inverter(scanner.nextLine());
-        System.out.printf("String invertida: %s\n", resultado);
+        InverterString.inverter(scanner.nextLine());
     }
 
     public static void main(String[] args) {
