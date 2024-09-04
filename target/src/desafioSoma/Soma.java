@@ -17,8 +17,8 @@ public class Soma {
 
     /**
      * Método público que realiza a operação de soma usando o valor padrão de 'i'.
-     * Este método utiliza o valor padrão de 'i' (que é 12) para somar todos os números
-     * de 1 até 12, como descrito no desafio.
+     * Este método utiliza o valor padrão de 'i' (que é 13) para somar todos os números
+     * de 1 até 13, como descrito no desafio.
      *
      * @return O resultado final da soma até o valor de 'i'.
      */
