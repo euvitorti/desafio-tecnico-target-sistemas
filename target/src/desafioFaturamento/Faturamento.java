@@ -10,10 +10,13 @@ import java.util.List;
 
 public class Faturamento {
 
+    // Caminho padrão do arquivo XML contendo os dados de faturamento
     private static final String CAMINHO_PADRAO_ARQUIVO_XML = "arquivosFaturamento/faturamentos.xml";
+
+    // Array para armazenar os valores de faturamento
     private double[] faturamentos;
 
-    // Construtor privado para uso interno na leitura dos dados
+    // Construtor privado para inicializar a instância com os dados de faturamento
     private Faturamento(double[] faturamentos) {
         this.faturamentos = faturamentos;
     }
@@ -34,11 +37,14 @@ public class Faturamento {
                 Element element = (Element) nodeList.item(i);
                 String valorFaturamento = element.getElementsByTagName("faturamento").item(0).getTextContent();
 
+                // Verifica se o valor de faturamento é não-nulo e não vazio
                 if (valorFaturamento != null && !valorFaturamento.isEmpty()) {
                     try {
                         // Converte o valor de faturamento para double
                         double valor = Double.parseDouble(valorFaturamento);
-                        if (valor > 0) { // Considera apenas dias com faturamento positivo
+
+                        // Considera apenas faturamentos positivos
+                        if (valor > 0) {
                             faturamentos.add(valor);
                         }
                     } catch (NumberFormatException e) {
@@ -60,6 +66,7 @@ public class Faturamento {
     // Método para encontrar o menor valor de faturamento
     public double menorFaturamento() {
         double menor = Double.MAX_VALUE;
+
         // Itera sobre o array de faturamentos para encontrar o menor valor maior que zero
         for (double faturamento : faturamentos) {
             if (faturamento < menor && faturamento > 0) {
@@ -72,6 +79,7 @@ public class Faturamento {
     // Método para encontrar o maior valor de faturamento
     public double maiorFaturamento() {
         double maior = Double.MIN_VALUE;
+
         // Itera sobre o array de faturamentos para encontrar o maior valor
         for (double faturamento : faturamentos) {
             if (faturamento > maior) {
@@ -85,6 +93,7 @@ public class Faturamento {
     public double mediaMensal() {
         double soma = 0;
         int count = 0;
+
         // Calcula a soma de todos os faturamentos positivos e conta os dias válidos
         for (double faturamento : faturamentos) {
             if (faturamento > 0) {
@@ -92,6 +101,7 @@ public class Faturamento {
                 count++;
             }
         }
+
         // Retorna a média ou 0 se não houver dias válidos
         return (count > 0) ? soma / count : 0;
     }
@@ -100,6 +110,7 @@ public class Faturamento {
     public int diasAcimaDaMedia() {
         double media = mediaMensal();
         int count = 0;
+
         // Conta quantos dias tiveram faturamento acima da média mensal
         for (double faturamento : faturamentos) {
             if (faturamento > media) {
@@ -109,13 +120,16 @@ public class Faturamento {
         return count;
     }
 
+    // Método para exibir as informações de faturamento
     public void mostrarFaturamento() {
 
+        // Obtém o menor e maior faturamento, a média mensal e o número de dias acima da média
         double menorFaturamento = menorFaturamento();
         double maiorFaturamento = maiorFaturamento();
         double mediaMensal = mediaMensal();
         int diasAcimaDaMedia = diasAcimaDaMedia();
 
+        // Exibe as informações formatadas
         System.out.printf("""
                    Menor valor de faturamento: %.2f
                    Maior valor de faturamento: %.2f

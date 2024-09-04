@@ -8,17 +8,21 @@ import java.io.File;
 
 public class LerXML {
 
-    // Método para ler e retornar o objeto Document de um arquivo XML
+    // Método estático para ler e retornar um objeto Document a partir de um arquivo XML
     public static Document fromXML(String caminhoArquivo, Class<?> className) throws Exception {
-        // Usa o ClassLoader da classe fornecida
+        // Obtém o ClassLoader da classe fornecida para localizar o arquivo XML
         ClassLoader classLoader = className.getClassLoader();
+
+        // Cria um objeto File a partir do caminho do recurso XML
         File file = new File(classLoader.getResource(caminhoArquivo).getFile());
 
-        // Configura e cria o DocumentBuilder
+        // Cria uma instância de DocumentBuilderFactory para configurar o DocumentBuilder
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+        // Cria um DocumentBuilder a partir da fábrica
         DocumentBuilder builder = factory.newDocumentBuilder();
 
-        // Lê e retorna o objeto Document que representa o conteúdo do arquivo XML
+        // Lê o conteúdo do arquivo XML e retorna o objeto Document que representa a estrutura do XML
         return builder.parse(file);
     }
 }
